@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Lokaverkefni</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="css/styles.css">
+		<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+	</head>
+	<body>
+		<div class="filters">
+			<div id="search">
+				<input type="text" placeholder="Search" id="filter-search">
+				<button type="submit" class="search-submit"><i class="fa fa-search"></i></button>
+			</div>
+			<div class="more-filters">
+			<div id="todo-list-buttons">
+		  <ul class="filter-buttons">
+
+			    <li
+			      is="todo-item"
+			      v-for="(todo, index) in todos"
+			      v-bind:key="todo.id"
+			      v-bind:title="todo.title"
+						v-on:button-filter="buttonFilter(todo.title)"
+			    ></li>
+
+		  </ul>
+		</div>
+
+			<div id="dates">
+				<input type="date" id="from">
+				<input type="date" id="to">
+			</div>
+		</div>
+		</div>
+		<div id="gallery">
+		</div>
+
+		<script src="js/main.js" charset="utf-8"></script>
+
+</body></html>

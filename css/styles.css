@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'FontAwesome';
+    src: url('../fonts/fontawesome-webfont.eot?v=4.7.0');
+    src: url('../fonts/fontawesome-webfont.eot?#iefix&v=4.7.0') format('embedded-opentype'),url('../fonts/fontawesome-webfont.woff2?v=4.7.0') format('woff2'),url('../fonts/fontawesome-webfont.woff?v=4.7.0') format('woff'),url('../fonts/fontawesome-webfont.ttf?v=4.7.0') format('truetype'),url('../fonts/fontawesome-webfont.svg?v=4.7.0#fontawesomeregular') format('svg');
+    font-weight: normal;
+    font-style: normal
+}
+
+.fa {
+    display: inline-block;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: inherit;
+    text-rendering: auto;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale
+}
+
+.fa-search:before {
+    content: "\f002"
+}
+
+.fa-search-plus:before {
+    content: "\f00e"
+}
+
+.fa-search-minus:before {
+    content: "\f010"
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	background-color: #f1f1f1;
+	font-family: 'Karla', sans-serif;
+  color: #333;
+}
+
+/* Filter and search options */
+#buttons, #search {
+	text-align: center;
+	margin-bottom: 5px;}
+
+/* Filter buttons */
+button {
+	background-color: #d7d7d7;
+	border: none;
+	padding: 3px 10px 4px 10px;
+
+	color: #333;
+	font-family: 'Karla', sans-serif;
+	font-size: 100%;}
+
+button:hover, button.active {
+	background-color: #00cccc;
+	color: #fff;
+	cursor: pointer;}
+
+
+/* Search input */
+input {
+	font-size: 120%;
+	border: 1px solid #999;
+	padding: 5px;}
+input:hover {
+	border: 1px solid #666;}
+input:focus {
+	border: 1px solid #00cccc;
+	outline: none;}
+
+
+/* Gallery of images */
+#gallery {
+	text-align: center;
+	max-width: 1020px;
+	margin: 0 auto;
+  overflow-y: scroll;
+  max-height: 640px;
+}
+
+#gallery img {
+	width: 300px;
+	height: 150px;
+	border-radius: 3px;
+	border: 8px solid #fff;
+	margin: 6px;
+    -webkit-box-shadow: 0 0 3px 3px #ebebeb;
+    box-shadow: 0 0 3px 3px #ebebeb;
+	float: left;}
+
+.filter-buttons {
+  display: inline-block;
+  padding: 0;
+}
+
+.filter-buttons li {
+  display: inline;
+}
+
+#dates {
+  display: inline-block;
+  padding-top: 14px;
+}
+
+.more-filters {
+  display: flex;
+  justify-content: space-between;
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+#search {
+  display: flex;
+  max-width: 960px;
+  margin: 0 auto;
+  padding-top: 2px;
+}
+
+#filter-search {
+  flex-basis: 95%;
+}
+
+.imgDiv {
+  max-width: 300px;
+  max-height: 200px;
+  margin: 10px;
+  display: inline-block;
+  text-align: left;
+}
+
+.imgDiv p {
+  padding-left: 7px;
+  margin-top: -12px;
+}
