@@ -101,6 +101,17 @@ input:focus {
   padding-top: 14px;
 }
 
+#dates input {
+  align-items: center;
+  display: -webkit-inline-flex;
+  font-family: monospace;
+  padding-inline-start: 1px;
+  cursor: default;
+  overflow: hidden;
+  height: 16px;
+  width: 168px;
+}
+
 .more-filters {
   display: flex;
   justify-content: space-between;

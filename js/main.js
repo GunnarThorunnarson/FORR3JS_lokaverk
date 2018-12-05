@@ -6,8 +6,9 @@ let currentImgs = imgGallery.getElementsByTagName('img');
 let currentImgDivs = imgGallery.getElementsByTagName('div');
 let search = document.getElementById('filter-search');
 let buttons = document.getElementsByClassName('filter-button');
+//let dateFrom = document.getElementById('dateFrom');
+//let dateTo = document.getElementById('dateTo');
 
-let tagged = [];
 let stadsetningar = {
   Hofudborgin: ['Háteigskirkja', 'Spot', 'Fríkirkjan', 'Fíladelfía', 'Lindakirkja', 'Bæjarbíó', 'Hallgrímskirkja'],
   Landsbyggdin: ['Blönduóskirkja', 'Bíóhöllin', 'Akureyrarkirkja', 'Siglufjarðarkirkja']
@@ -25,7 +26,7 @@ request.onload = function() {
     // Success!
 
     let data = JSON.parse(request.responseText);
-    console.log(data);
+    //console.log(data);
     for(let i of data.results) {
       let newImg = new Image(300, 150);
       let imgDiv = document.createElement('div');
@@ -40,44 +41,38 @@ request.onload = function() {
       tonlNafn.innerHTML = i.eventDateName;
       tonlStad.innerHTML = i.eventHallName;
 
-      if (tagged[i.eventHallName] == null && i.eventHallName !== "") {
-        tagged[i.eventHallName] = [];
-      }
-      if (i.eventHallName !== "") {
-        tagged[i.eventHallName].push(newImg);
-      }
-
       imgGallery.appendChild(imgDiv);
       imgDiv.appendChild(newImg);
       imgDiv.appendChild(tonlNafn);
       imgDiv.appendChild(tonlStad);
 
+      // til ad baeta adeins vid filterana, getur verid vitlaust ef margir stadir med sama nafn i gaganasafninu theirra
       let splitGroupName = i.userGroupName.split(' ');
       let grequest = new XMLHttpRequest();
       for(let sgn of splitGroupName) {
         if (sgn !== 'ehf'){
           grequest.open('GET', 'http://apis.is/company?name=' + sgn, true);
-          console.log('sgn:',sgn);
+          //console.log('sgn:',sgn);
         } else {
           grequest.open('GET', 'http://apis.is/company?name=' + i.userGroupName, true);
-          console.log('var med ehf:', i.userGroupName);
+          //console.log('var med ehf:', i.userGroupName);
         }
       }
 
       grequest.onload = function() {
         if (grequest.status >= 200 && grequest.status < 400) {
           let compData = JSON.parse(grequest.responseText);
-          console.log('allt compdata: ', compData);
+          //console.log('allt compdata: ', compData);
           for(let company of compData.results){
             let splitAddress = company.address.split(' ');
-            console.log('splitAddress:',splitAddress);
+            //console.log('splitAddress:',splitAddress);
             if (splitAddress.includes('Reykjavík') === true && stadsetningar.Hofudborgin.includes(i.eventHallName) === false && stadsetningar.Landsbyggdin.includes(i.eventHallName) === false) {
               stadsetningar.Hofudborgin.push(i.eventHallName);
-              console.log('sett inn i Hofudborgin:', i.eventHallName);
+              //console.log('sett inn i Hofudborgin:', i.eventHallName);
             } else if (splitAddress.includes('Reykjavík') === false && stadsetningar.Landsbyggdin.includes(i.eventHallName) === false && stadsetningar.Hofudborgin.includes(i.eventHallName) === false) {
               stadsetningar.Landsbyggdin.push(i.eventHallName);
-              console.log('sett inn i Landsbyggdin:', i.eventHallName);
-              console.log('thetta er address:', company.address);
+              //console.log('sett inn i Landsbyggdin:', i.eventHallName);
+              //console.log('thetta er address:', company.address);
             }
           }
         }
@@ -168,8 +163,6 @@ function filter() {
   let query = this.value.trim().toLowerCase();
 
   for(let oneImgDiv of currentImgDivs) {
-    console.log(oneImgDiv);
-    console.log(oneImgDiv.childNodes);
     if (oneImgDiv.childNodes[0].alt.includes(query) === true){
       oneImgDiv.hidden = false;
       for(let test of oneImgDiv.childNodes) {
