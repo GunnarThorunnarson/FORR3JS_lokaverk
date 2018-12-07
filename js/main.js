@@ -51,7 +51,7 @@ request.onload = function() {
       let grequest = new XMLHttpRequest();
       for(let sgn of splitGroupName) {
         if (sgn !== 'ehf'){
-          grequest.open('GET', 'http://apis.is/company?name=' + sgn, true);
+          grequest.open('GET', 'https://apis.is/company?name=' + sgn, true);
           //console.log('sgn:',sgn);
         } else {
           grequest.open('GET', 'http://apis.is/company?name=' + i.userGroupName, true);
