@@ -54,7 +54,7 @@ request.onload = function() {
           grequest.open('GET', 'https://apis.is/company?name=' + sgn, true);
           //console.log('sgn:',sgn);
         } else {
-          grequest.open('GET', 'http://apis.is/company?name=' + i.userGroupName, true);
+          grequest.open('GET', 'https://apis.is/company?name=' + i.userGroupName, true);
           //console.log('var med ehf:', i.userGroupName);
         }
       }
