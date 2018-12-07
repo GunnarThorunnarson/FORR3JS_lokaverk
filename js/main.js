@@ -33,6 +33,7 @@ request.onload = function() {
       imgDiv.className = 'imgDiv';
       let tonlNafn = document.createElement('p');
       let tonlStad = document.createElement('p');
+      let tonlDags = document.createElement('p');
 
       newImg.src = i.imageSource;
       newImg.dataset.tags = i.eventHallName.toLowerCase();
@@ -40,11 +41,13 @@ request.onload = function() {
 
       tonlNafn.innerHTML = i.eventDateName;
       tonlStad.innerHTML = i.eventHallName;
+      tonlDags.innerHTML = moment(i.dateOfShow).locale('is').format('Do MMMM')
 
       imgGallery.appendChild(imgDiv);
       imgDiv.appendChild(newImg);
       imgDiv.appendChild(tonlNafn);
       imgDiv.appendChild(tonlStad);
+      imgDiv.appendChild(tonlDags);
 
       // til ad baeta adeins vid filterana, getur verid vitlaust ef margir stadir med sama nafn i gaganasafninu theirra
       let splitGroupName = i.userGroupName.split(' ');
